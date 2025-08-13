@@ -104,3 +104,64 @@ for(i in seq_along(tree_height)){
   val <- tree_height[i] + tree_height[i+1]
   print(val)
 }
+
+# for loops with conditional statements
+animal <- c("cat", "dog", "dog", "zebra", "dog")
+one_animal <- animal[2]
+if(one_animal == "dog"){
+  print("i love dogs")
+} else{
+    print("these are other animals")
+}
+
+for(i in seq_along(animal) #this is defining i in animals
+    ){
+if(animal[i] == "dog"){
+  print("I love dogs")
+}else {
+  print("other animal")
+}
+}
+
+# another for loop example with conditionals
+#animal species
+
+species <- c("dog", "elephant", "goat", "dog", "dog", "elephant")
+
+# convert ages into respective animal ages
+
+age_human <- c(3, 8, 4, 6, 12, 18)
+
+# 1 human year = 7 in dog years
+# 1 human year = 0.88 in elephant years
+# 1 human year = 4.7 in goat years
+i <- 1
+
+# allocate a space for output 
+
+animal_ages <- vector(mode = "numeric", length = length(species)) #will create an empty vector with the appropriate list size
+for(i in seq_along(species)){
+if(species[i] == "dog"){
+  animal_age <- age_human[i]*7
+}else if (species[i] == "elephant"){
+  animal_age <- age_human[i]*0.88
+}else if(species[i] =="goat"){
+  animal_age <- age_human[i]*4.7
+}
+  animal_ages[i] <- animal_age # outside of conditional stores the information in the empty vector we created above
+}
+
+
+# another example of storing
+
+tigers <- c(29, 39, 82)
+lions<- c(2, 18, 6)
+
+big_cats <- vector(mode = "numeric", length = length(tigers)) #allocate storage for new values
+for(i in seq_along(tigers)){
+  total_cats <- tigers[i]+lions[i]
+  big_cats[i] <- total_cats
+}
+# you can also lose total_cats and replace with big_cats[i]
+
+
