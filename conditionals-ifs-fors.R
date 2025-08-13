@@ -165,3 +165,37 @@ for(i in seq_along(tigers)){
 # you can also lose total_cats and replace with big_cats[i]
 
 
+mean_mtcars <- vector(mode = "numeric", length = ncol(mtcars))
+
+for(i in 1:ncol(mtcars)){
+mean_mtcars[i] <- mean(mtcars[[i]], na.rm = TRUE)
+}
+
+# a for loop over columns with a condition
+
+library(palmerpenguins)
+
+
+for(i in seq_along(penguins)){
+if(is.numeric(penguins[[i]])){
+penguin_median[i] <- median(penguins[[i]], na.rm = TRUE)
+print("penguin median")
+}else{
+  print("data not numeric")
+}
+}
+
+
+# functional programming
+
+#apply() function iterates over columns or rows
+# rewrite for loop for finding means of mtcars columns
+apply(X= mtcars, MARGIN = 2, FUN = mean) # margin is by row or by column
+
+library(tidyverse)
+
+penguins |> 
+  group_by(species) |>
+  summarise(across(where(is.numeric), mean, na.rm = TRUE)) 
+
+
